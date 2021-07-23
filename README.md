@@ -1,3 +1,25 @@
+# Repro for realm-js issue #3866
+
+1. Install project depenencies: `yarn install`
+2. Move `.env.local.example` as `.env.local` and put in a Realm App ID
+3. Run development server: `yarn dev` -- the bug is now visible in console
+4. Comment out script-tag in `index.html` to make the bug disappear
+
+## Full Traceback
+```
+
+05:54:21.520 [vite] connecting... client:180:9
+05:54:21.552 [vite] connected. client:202:21
+05:54:21.782 Uncaught ReferenceError: global is not defined
+    <anonymous> http://localhost:3000/node_modules/.vite/realm-web.js?v=e0afb5d8:1676
+realm-web.js:1676:19
+    <anonymous> http://localhost:3000/node_modules/.vite/realm-web.js?v=e0afb5d8:1676
+    InnerModuleEvaluation self-hosted:2384
+    InnerModuleEvaluation self-hosted:2384
+    InnerModuleEvaluation self-hosted:2384
+    evaluation self-hosted:2335
+
+```
 # Vite Typescript + Tailwind Starter
 
 Simple, opinionated, and **production-ready** project template for Vite.
